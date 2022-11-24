@@ -1,0 +1,12 @@
+{
+  "root": {
+    "a": {
+      "b": {
+        "c.txt": "Lorem Ipsum"
+      }
+    },
+    "d": {
+      "e.txt": "Lorem Ipsum 2"
+    }
+  }
+}

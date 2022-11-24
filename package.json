@@ -1,0 +1,48 @@
+{
+  "name": "assignly",
+  "productName": "Assignly",
+  "private": true,
+  "version": "1.0.0",
+  "description": "CPEN 441 Project",
+  "author": "Crypto Bros",
+  "license": "MIT",
+  "main": "dist-electron/electron/main/index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && electron-builder"
+  },
+  "engines": {
+    "node": "^14.18.0 || >=16.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@vitejs/plugin-react": "^2.1.0",
+    "electron": "^21.1.0",
+    "electron-builder": "^23.3.3",
+    "eslint": "^8.28.0",
+    "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.5.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.31.11",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.55.0",
+    "typescript": "^4.9.3",
+    "vite": "^3.2.2",
+    "vite-electron-plugin": "^0.5.2",
+    "vite-plugin-electron-renderer": "^0.11.3"
+  },
+  "debug": {
+    "env": {
+      "VITE_DEV_SERVER_URL": "http://127.0.0.1:7777"
+    }
+  },
+  "dependencies": {
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react-hooks": "^4.6.0"
+  }
+}
