@@ -1,10 +1,34 @@
 {
   "compilerOptions": {
     "composite": true,
+    "baseUrl": ".",
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "paths": {
+      "@/*": ["src/*"],
+      "styles/*": ["src/assets/styles/*"],
+      "components/*": ["src/components/*"],
+      "common/*": ["./common/*"]
+    },
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
-  "include": ["package.json", "electron"]
+  "include": [
+    "package.json",
+    "electron",
+    "common",
+    "common/**/*.json",
+    "declarations.d.ts"
+  ]
 }

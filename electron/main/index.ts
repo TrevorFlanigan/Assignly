@@ -25,11 +25,11 @@ let win: BrowserWindow | null = null;
 const preload = join(__dirname, "../preload/index.js");
 const url = process.env.VITE_DEV_SERVER_URL;
 const indexHtml = join(process.env.DIST, "index.html");
+// const fsController = new FileSystemController();
 
 async function createWindow() {
-  const t = new FileSystemController();
-  await t.createAppDir();
-  await t.createTestFS(join(__dirname, "../FileSystemController/test.json"));
+  // await fsController.createAppDir();
+  // await fsController.createTestFS();
 
   win = new BrowserWindow({
     title: "Main window",

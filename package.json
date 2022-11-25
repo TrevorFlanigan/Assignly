@@ -15,6 +15,7 @@
     "node": "^14.18.0 || >=16.0.0"
   },
   "devDependencies": {
+    "@types/lodash.get": "^4.4.7",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
@@ -41,8 +42,26 @@
     }
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@mantine/core": "^5.8.3",
+    "@mantine/dropzone": "^5.8.3",
+    "@mantine/hooks": "^5.8.3",
+    "@mantine/notifications": "^5.8.3",
+    "@mantine/spotlight": "^5.8.3",
+    "@naisutech/react-tree": "^3.1.0",
+    "@react-spring/web": "^9.5.5",
+    "@reduxjs/toolkit": "^1.9.0",
+    "@tabler/icons": "^1.113.0",
+    "@types/lodash.clamp": "^4.0.7",
+    "@use-gesture/react": "^10.2.22",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "lodash-move": "^1.1.1",
+    "lodash.clamp": "^4.0.3",
+    "lodash.get": "^4.4.2",
+    "react-redux": "^8.0.5",
+    "react-treeviewer": "^1.0.0",
+    "vite-plugin-static-copy": "^0.12.0"
   }
 }

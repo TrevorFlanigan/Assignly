@@ -2,17 +2,13 @@ import fs from "fs/promises";
 import { existsSync, readFileSync } from "fs";
 import { app } from "electron";
 import { join } from "path";
-
-type MockFile = {
-  [x: string]: MockFile | string;
-};
-
+import { MockFile } from "common/types";
+import sampleFileSystem from "../../common/fileSystem/";
 class FileSystemController {
   private static appDataPath = join(app.getPath("appData"), app.getName());
   constructor() {
-    console.log(FileSystemController.appDataPath);
+    // console.log(FileSystemController.appDataPath);
   }
-
   public async test() {
     console.log(await fs.lstat(process.cwd()));
   }
@@ -23,7 +19,7 @@ class FileSystemController {
     }
   }
 
-  private createFileWithContent(filePath: string, content) {
+  private createFileWithContent(filePath: string, content: string) {
     return fs.writeFile(filePath, content);
   }
 
@@ -31,16 +27,12 @@ class FileSystemController {
     return this.createDirIfNotExists(FileSystemController.appDataPath);
   }
 
-  public async createTestFS(path: string) {
-    const jsonFile = await fs.readFile(path);
-    const FS = JSON.parse(jsonFile.toString()) as MockFile;
-    console.log("FS", FS);
-
-    this.createTestFSHelper(FS, FileSystemController.appDataPath);
+  public async createTestFS() {
+    this.createTestFSHelper(sampleFileSystem, FileSystemController.appDataPath);
   }
 
-  private async createTestFSHelper(fs: MockFile, path: string) {
-    return await Promise.all(
+  private async createTestFSHelper(fs: MockFile, path: string): Promise<void> {
+    await Promise.all(
       Object.entries(fs).map(async ([key, entry]) => {
         const currPath = join(path, key);
         if (typeof entry === "string") {

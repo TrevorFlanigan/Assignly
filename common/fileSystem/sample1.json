@@ -1,0 +1,27 @@
+{
+  "CPEN 441": {
+    "id": "CPEN 441",
+    "type": "COURSE",
+    "items": {
+      "Assignment 1": {
+        "id": "Assignment 1",
+        "type": "ASSIGNMENT",
+        "items": {
+          "c": {
+            "id": "c",
+            "type": "NOTE",
+            "label": "c"
+          }
+        }
+      }
+    }
+  },
+  "CPSC 330": {
+    "id": "CPSC 330",
+    "type": "COURSE"
+  },
+  "CPEN 400D": {
+    "id": "CPEN 400D",
+    "type": "COURSE"
+  }
+}
