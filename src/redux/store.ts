@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import fileSystemReducer from "./fileSystemSlice";
 import pathReducer from "./pathSlice";
+import pinnedReducer from "./pinnedSlice";
 
 const store = configureStore({
   reducer: {
     path: pathReducer,
     fileSystem: fileSystemReducer,
+    pinned: pinnedReducer,
   },
 });
 

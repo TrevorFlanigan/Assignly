@@ -9,7 +9,7 @@ const HeaderWithPath = () => {
   const path = useAppSelector(selectPath);
 
   const handleClick = (index: number) => {
-    dispatch({ type: popTo.type, payload: index });
+    dispatch(popTo(index));
   };
 
   return (

@@ -2,7 +2,7 @@ import fs from "fs/promises";
 import { existsSync, readFileSync } from "fs";
 import { app } from "electron";
 import { join } from "path";
-import { MockFile } from "common/types";
+import { MockDirectory } from "common/types";
 import sampleFileSystem from "../../common/fileSystem/";
 class FileSystemController {
   private static appDataPath = join(app.getPath("appData"), app.getName());
@@ -31,7 +31,10 @@ class FileSystemController {
     this.createTestFSHelper(sampleFileSystem, FileSystemController.appDataPath);
   }
 
-  private async createTestFSHelper(fs: MockFile, path: string): Promise<void> {
+  private async createTestFSHelper(
+    fs: MockDirectory,
+    path: string
+  ): Promise<void> {
     await Promise.all(
       Object.entries(fs).map(async ([key, entry]) => {
         const currPath = join(path, key);

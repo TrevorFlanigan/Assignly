@@ -1,32 +1,42 @@
-import {
-  selectFileSystem,
-  selectHighestChildren,
-} from "@/redux/fileSystemSlice";
+import { selectHighestChildren } from "@/redux/fileSystemSlice";
 import { push, selectPath } from "@/redux/pathSlice";
+import { pin, selectPinned, unpin } from "@/redux/pinnedSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
+import { IconPin } from "@tabler/icons";
+import { MockFileContent } from "common/types";
 const FileView = () => {
-  const path = useAppSelector(selectPath);
   const dispatch = useAppDispatch();
+  const path = useAppSelector(selectPath);
   const highestChildren = useAppSelector(selectHighestChildren);
-  console.log(highestChildren);
+
   const handleClick = (key: string) => {
-    dispatch({ type: push.type, payload: key });
+    dispatch(push(key));
   };
 
-  const fileSystem = useAppSelector(selectFileSystem);
+  const handlePin = (key: string, file: MockFileContent) => {
+    dispatch(
+      pin({
+        path: [...path, key],
+        name: key,
+        type: file.type,
+      })
+    );
+  };
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      {Object.keys(highestChildren).map((key) => {
+      {Object.entries(highestChildren).map(([key, file]) => {
         return (
-          <a
-            style={{ border: "1px solid black" }}
-            key={key}
-            href="#"
-            onClick={() => handleClick(key)}
-          >
-            {key}
-          </a>
+          <div key={key}>
+            <a
+              style={{ border: "1px solid black" }}
+              href="#"
+              onClick={() => handleClick(key)}
+            >
+              {key}
+            </a>
+            <IconPin onClick={() => handlePin(key, file)} />
+          </div>
         );
       })}
     </div>

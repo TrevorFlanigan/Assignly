@@ -57,6 +57,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "fuse.js": "^6.6.2",
     "lodash-move": "^1.1.1",
     "lodash.clamp": "^4.0.3",
     "lodash.get": "^4.4.2",

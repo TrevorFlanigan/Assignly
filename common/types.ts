@@ -4,10 +4,13 @@ export enum FileType {
   NOTE = "NOTE",
 }
 
-export type MockFile = {
-  [fileName: string]: {
-    id: string;
-    items: MockFile;
-    type: FileType;
-  };
+export type MockDirectory = {
+  [fileName: string]: MockFileContent;
+};
+
+export type MockFileContent = {
+  pinned: boolean | undefined;
+  id: string;
+  items: MockDirectory;
+  type: FileType;
 };

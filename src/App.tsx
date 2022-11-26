@@ -1,5 +1,4 @@
-import { AppShell, Header, Navbar } from "@mantine/core";
-import { Breadcrumbs, Anchor } from "@mantine/core";
+import { Anchor, AppShell } from "@mantine/core";
 import FileView from "./components/FileView";
 import HeaderWithPath from "./components/HeaderWithPath";
 import Sidebar from "./components/Sidebar";
