@@ -1,0 +1,26 @@
+import { FileType, MockFileContent } from "common/types";
+import {
+  IconBook2,
+  IconListCheck,
+  IconFileInfo,
+  IconFile,
+} from "@tabler/icons";
+type FileIconProps = {
+  file: MockFileContent;
+};
+
+const FileIcon = ({ file }: FileIconProps) => {
+  switch (file.type) {
+    case FileType.ASSIGNMENT:
+      return <IconListCheck />;
+    case FileType.COURSE:
+      return <IconBook2 />;
+    case FileType.COURSE:
+      return <IconFileInfo />;
+    default:
+      return <IconFile />;
+  }
+};
+
+export default FileIcon;
+1;
