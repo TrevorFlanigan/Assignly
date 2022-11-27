@@ -7,6 +7,7 @@ import { IconHome, IconSearch } from "@tabler/icons";
 import { MockDirectory } from "common/types";
 import { ReactNode, useEffect, useState } from "react";
 import Fuse from "fuse.js";
+import FileIcon from "@/components/FileIcon";
 type SpotlightContextProps = {
   children: ReactNode;
 };
@@ -34,6 +35,7 @@ const SpotlightContext = ({ children }: SpotlightContextProps) => {
           title: value.id,
           group: value.type,
           keywords: currPath,
+          icon: <FileIcon file={value} />,
           onTrigger: () => {
             handleFileAction(currPath);
           },
@@ -58,7 +60,7 @@ const SpotlightContext = ({ children }: SpotlightContextProps) => {
     const allActions = [homeAction, ...newActions];
     fuse.setCollection(allActions);
     setActions([homeAction, ...newActions]);
-  }, []);
+  }, [files]);
 
   if (!fuse)
     return (
@@ -98,7 +100,6 @@ const SpotlightContext = ({ children }: SpotlightContextProps) => {
         const res = fuse
           .search(query, { limit: SEARCH_LIMIT })
           .map((res) => res.item);
-        console.log(res);
         return res;
       }}
       nothingFoundMessage="Nothing found..."

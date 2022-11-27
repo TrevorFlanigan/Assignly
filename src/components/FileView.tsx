@@ -1,10 +1,10 @@
+import createContextMenu from "@/MenuItem/createContextMenu";
 import { selectHighestChildren } from "@/redux/fileSystemSlice";
 import { push, selectPath } from "@/redux/pathSlice";
-import { pin, selectPinned, unpin } from "@/redux/pinnedSlice";
+import { pin } from "@/redux/pinnedSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { Table } from "@mantine/core";
-import { IconPin } from "@tabler/icons";
-import { MockFileContent } from "common/types";
+import { MenuOptions, MockFileContent } from "common/types";
 import FileContainer from "./FileContainer";
 
 const FileView = () => {
@@ -27,26 +27,35 @@ const FileView = () => {
   };
 
   return (
-    <Table striped withColumnBorders withBorder>
-      <thead>
-        <tr>
-          <th style={{ width: "content" }}>Name</th>
-          <th style={{ width: "content" }}>Type</th>
-          <th style={{ width: "0px" }}></th>
-        </tr>
-      </thead>
-      <tbody>
-        {Object.entries(highestChildren).map(([name, file]) => (
-          <FileContainer
-            key={name}
-            name={name}
-            file={file}
-            handleClick={handleClick}
-            handlePin={handlePin}
-          />
-        ))}
-      </tbody>
-    </Table>
+    <div
+      onContextMenu={() => {
+        createContextMenu([MenuOptions.NEW_FOLDER], path);
+      }}
+      style={{ height: "100%", width: "100%", userSelect: "none" }}
+    >
+      <Table striped withColumnBorders withBorder>
+        <thead>
+          <tr>
+            <th style={{ width: "content" }}>Name</th>
+            <th style={{ width: "content" }}>Type</th>
+            <th style={{ width: "0px" }}></th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.entries(highestChildren)
+            .sort(([a], [b]) => a.localeCompare(b))
+            .map(([name, file]) => (
+              <FileContainer
+                key={name}
+                name={name}
+                file={file}
+                handleClick={handleClick}
+                handlePin={handlePin}
+              />
+            ))}
+        </tbody>
+      </Table>
+    </div>
   );
 };
 

@@ -4,6 +4,8 @@ import {
   IconListCheck,
   IconFileInfo,
   IconFile,
+  IconFolder,
+  IconNotes,
 } from "@tabler/icons";
 type FileIconProps = {
   file: MockFileContent;
@@ -17,6 +19,10 @@ const FileIcon = ({ file }: FileIconProps) => {
       return <IconBook2 />;
     case FileType.COURSE:
       return <IconFileInfo />;
+    case FileType.FOLDER:
+      return <IconFolder />;
+    case FileType.NOTES:
+      return <IconNotes />;
     default:
       return <IconFile />;
   }

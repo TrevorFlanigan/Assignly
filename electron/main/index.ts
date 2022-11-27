@@ -4,11 +4,18 @@ process.env.PUBLIC = app.isPackaged
   ? process.env.DIST
   : join(process.env.DIST_ELECTRON, "../public");
 
-import { app, BrowserWindow, shell, ipcMain } from "electron";
+import {
+  app,
+  BrowserWindow,
+  shell,
+  ipcMain,
+  MenuItem,
+  PopupOptions,
+  IpcMainEvent,
+} from "electron";
+import { Menu } from "electron/main";
 import { release } from "os";
 import { join } from "path";
-import FileSystemController from "../FileSystemController/FileSystemContoller";
-
 // Disable GPU Acceleration for Windows 7
 if (release().startsWith("6.1")) app.disableHardwareAcceleration();
 
@@ -25,12 +32,8 @@ let win: BrowserWindow | null = null;
 const preload = join(__dirname, "../preload/index.js");
 const url = process.env.VITE_DEV_SERVER_URL;
 const indexHtml = join(process.env.DIST, "index.html");
-// const fsController = new FileSystemController();
 
 async function createWindow() {
-  // await fsController.createAppDir();
-  // await fsController.createTestFS();
-
   win = new BrowserWindow({
     title: "Main window",
     icon: join(process.env.PUBLIC, "favicon.svg"),
@@ -101,4 +104,39 @@ ipcMain.handle("open-win", (event, arg) => {
   } else {
     childWindow.loadFile(indexHtml, { hash: arg });
   }
+});
+
+const getMenuOption = (
+  option: string,
+  path: string[],
+  event: IpcMainEvent,
+  extra?: any
+): MenuItem => {
+  let submenu:
+    | Electron.MenuItemConstructorOptions[]
+    | Electron.Menu
+    | undefined;
+  if (extra && extra[option]) {
+    const submenuLabels = extra[option].submenuLabels;
+    console.log(submenuLabels);
+  }
+  return new MenuItem({
+    label: option,
+    submenu,
+    click: () => {
+      event.sender.send("context-menu-command", { option, path });
+    },
+  });
+};
+
+ipcMain.on("show-context-menu", (event, args) => {
+  const { menuOptions, path, extra } = args;
+
+  const template: MenuItem[] = [];
+  menuOptions.forEach((option: string) => {
+    template.push(getMenuOption(option, path, event, extra));
+  });
+
+  const menu = Menu.buildFromTemplate(template);
+  menu.popup(BrowserWindow.fromWebContents(event.sender) as PopupOptions);
 });
