@@ -1,35 +1,199 @@
 {
-    "CPEN 100": {
-        "id": "CPEN 100",
+    "SCIFI 100": {
+        "id": "SCIFI 100",
         "type": "COURSE",
         "items": {
-            "Modules": {
-                "id": "Modules",
-                "type": "MODULES",
+            "Lecture Notes": {
+                "id": "Lecture Notes",
+                "type": "NOTES",
                 "items": {
-                    "Course Lecture Materials": {
-                        "id": "Course Lecture Materials",
-                        "type": "FOLDER",
+                    "lecture1": {
+                        "id": "lecture1",
+                        "type": "PDF",
+                        "leaf": "lecture1.pdf"
+                    },
+                    "lecture2": {
+                        "id": "lecture2",
+                        "type": "PDF",
+                        "leaf": "lecture2.pdf"
+                    },
+                    "lecture3": {
+                        "id": "lecture3",
+                        "type": "PDF",
+                        "leaf": "lecture3.pdf"
+                    },
+                    "lecture4": {
+                        "id": "lecture4",
+                        "type": "PDF",
+                        "leaf": "lecture4.pdf"
+                    },
+                    "lecture5": {
+                        "id": "lecture5",
+                        "type": "PDF",
+                        "leaf": "lecture5.pdf"
+                    },
+                    "lecture6": {
+                        "id": "lecture6",
+                        "type": "PDF",
+                        "leaf": "lecture6.pdf"
+                    },
+                    "lecture7": {
+                        "id": "lecture7",
+                        "type": "PDF",
+                        "leaf": "lecture7.pdf"
+                    },
+                    "lecture8": {
+                        "id": "lecture8",
+                        "type": "PDF",
+                        "leaf": "lecture8.pdf"
+                    },
+                    "lecture9": {
+                        "id": "lecture9",
+                        "type": "PDF",
+                        "leaf": "lecture9.pdf"
+                    },
+                    "lecture10": {
+                        "id": "lecture10",
+                        "type": "PDF",
+                        "leaf": "lecture10.pdf"
+                    }
+                }
+            },
+            "Assignments": {
+                "id": "Assignments",
+                "type": "FOLDER",
+                "items": {
+                    "assignment1": {
+                        "id": "Assignment 1",
+                        "type": "ASSIGNMENT",
                         "items": {
-                            "lecture1": {
-                                "id": "lecture1",
+                            "Instructions": {
+                                "id": "Instructions",
                                 "type": "PDF",
-                                "leaf": "test.pdf"
-                            },
-                            "lecture2": {
-                                "id": "lecture2",
+                                "leaf": "scifi100_assignment1.pdf"
+                            }
+                        }
+                    },
+                    "assignment2": {
+                        "id": "Assignment 2",
+                        "type": "ASSIGNMENT",
+                        "items": {
+                            "Instructions": {
+                                "id": "Instructions",
                                 "type": "PDF",
-                                "leaf": "test.pdf"
-                            },
-                            "lecture3": {
-                                "id": "lecture3",
+                                "leaf": "scifi100_assignment2.pdf"
+                            }
+                        }
+                    },
+                    "assignment3": {
+                        "id": "Assignment 3",
+                        "type": "ASSIGNMENT",
+                        "items": {
+                            "Instructions": {
+                                "id": "Instructions",
                                 "type": "PDF",
-                                "leaf": "test.pdf"
-                            },
-                            "lecture4": {
-                                "id": "lecture3",
+                                "leaf": "scifi100_assignment3.pdf"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "SCIFI 101": {
+        "id": "SCIFI 101",
+        "type": "COURSE",
+        "items": {
+            "Lecture Notes": {
+                "id": "Lecture Notes",
+                "type": "NOTES",
+                "items": {
+                    "lecture1": {
+                        "id": "lecture11",
+                        "type": "PDF",
+                        "leaf": "lecture11.pdf"
+                    },
+                    "lecture2": {
+                        "id": "lecture12",
+                        "type": "PDF",
+                        "leaf": "lecture12.pdf"
+                    },
+                    "lecture3": {
+                        "id": "lecture13",
+                        "type": "PDF",
+                        "leaf": "lecture13.pdf"
+                    },
+                    "lecture4": {
+                        "id": "lecture14",
+                        "type": "PDF",
+                        "leaf": "lecture14.pdf"
+                    },
+                    "lecture5": {
+                        "id": "lecture15",
+                        "type": "PDF",
+                        "leaf": "lecture15.pdf"
+                    },
+                    "lecture6": {
+                        "id": "lecture16",
+                        "type": "PDF",
+                        "leaf": "lecture16.pdf"
+                    },
+                    "lecture7": {
+                        "id": "lecture17",
+                        "type": "PDF",
+                        "leaf": "lecture17.pdf"
+                    },
+                    "lecture8": {
+                        "id": "lecture18",
+                        "type": "PDF",
+                        "leaf": "lecture18.pdf"
+                    },
+                    "lecture9": {
+                        "id": "lecture19",
+                        "type": "PDF",
+                        "leaf": "lecture19.pdf"
+                    },
+                    "lecture10": {
+                        "id": "lecture20",
+                        "type": "PDF",
+                        "leaf": "lecture20.pdf"
+                    }
+                }
+            },
+            "Assignments": {
+                "id": "Assignments",
+                "type": "FOLDER",
+                "items": {
+                    "assignment1": {
+                        "id": "Assignment 1",
+                        "type": "ASSIGNMENT",
+                        "items": {
+                            "Instructions": {
+                                "id": "Instructions",
                                 "type": "PDF",
-                                "leaf": "test.pdf"
+                                "leaf": "scifi101_assignment1.pdf"
+                            }
+                        }
+                    },
+                    "assignment2": {
+                        "id": "Assignment 2",
+                        "type": "ASSIGNMENT",
+                        "items": {
+                            "Instructions": {
+                                "id": "Instructions",
+                                "type": "PDF",
+                                "leaf": "scifi101_assignment2.pdf"
+                            }
+                        }
+                    },
+                    "assignment3": {
+                        "id": "Assignment 3",
+                        "type": "ASSIGNMENT",
+                        "items": {
+                            "Instructions": {
+                                "id": "Instructions",
+                                "type": "PDF",
+                                "leaf": "scifi101_assignment3.pdf"
                             }
                         }
                     }
