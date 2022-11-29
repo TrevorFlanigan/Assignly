@@ -99,7 +99,6 @@ export const fileSystemSlice = createSlice({
     },
     finishMoveTo: (state, actions: PayloadAction<FinishMoveToEvent>) => {
       const { srcPath, destPath } = actions.payload;
-      console.log(srcPath, destPath);
       if (srcPath.join("/") === destPath.join("/")) {
         state.toMove = undefined;
         showNotification({
@@ -141,6 +140,37 @@ export const fileSystemSlice = createSlice({
       });
       state.toMove = undefined;
     },
+    finishCopyTo: (state, action: PayloadAction<FinishCopyToEvent>) => {
+      const { cancel, file, path, name } = action.payload;
+      if (cancel || !file) {
+        showNotification({
+          id: "copy-file",
+          title: "Copy File Cancelled",
+          message: "File was not copied",
+          autoClose: 2000,
+          icon: <IconX />,
+          color: "gray",
+        });
+        return;
+      }
+      const currFileName = name;
+
+      const dest = getParentDirectory(state.value, path);
+      if (!dest.items) {
+        dest.items = {};
+      }
+      let suffix = "";
+      let i = 1;
+      while (dest.items[`${currFileName}${suffix}`] !== undefined) {
+        suffix = " " + i;
+        i += 1;
+      }
+      const old = Object.assign(file, {});
+      const newFileName = `${currFileName}${suffix}`;
+
+      dest.items[newFileName] = old;
+      // dest.items[newFileName].id = newFileName;
+    },
   },
   extraReducers: {
     [pinnedSlice.actions.pin.type]: (
@@ -172,6 +202,13 @@ export const fileSystemSlice = createSlice({
     },
   },
 });
+
+export type FinishCopyToEvent = {
+  cancel?: boolean;
+  name: string;
+  file: MockFileContent | undefined;
+  path: string[];
+};
 
 export type NewThingEvent = {
   path: string[];
@@ -250,5 +287,6 @@ export const {
   finishChangeType,
   startMoveTo,
   finishMoveTo,
+  finishCopyTo,
 } = fileSystemSlice.actions;
 export default fileSystemSlice.reducer;

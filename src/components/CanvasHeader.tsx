@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { Anchor, Breadcrumbs, Button, Group, Header, Kbd } from "@mantine/core";
 import { openSpotlight } from "@mantine/spotlight";
 import { IconSearch } from "@tabler/icons";
-
+import canvasLogo from "@/assets/canvasLogo.png";
 const CanvasHeader = () => {
   const dispatch = useAppDispatch();
   const path = useAppSelector(selectPath);
@@ -23,7 +23,11 @@ const CanvasHeader = () => {
       height={60}
       p="xs"
     >
-      <div> Canvas </div>
+      <img
+        onClick={() => handleClick(0)}
+        style={{ width: 100, cursor: "pointer" }}
+        src={canvasLogo}
+      />
       <Breadcrumbs>
         {path.length === 0 ? (
           <div onClick={() => handleClick(0)}>Home</div>

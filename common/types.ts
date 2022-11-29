@@ -4,6 +4,7 @@ export enum FileType {
   NOTES = "NOTES",
   FOLDER = "FOLDER",
   PDF = "PDF",
+  MODULES = "MODULES",
   ASSIGNMENT = "ASSIGNMENT",
 }
 
@@ -28,4 +29,5 @@ export enum MenuOptions {
   RENAME = "Rename",
   CHANGE_TYPE = "Change File Type",
   MOVE_TO = "Move To...",
+  COPY_TO = "Copy to Assignly Cloud...",
 }

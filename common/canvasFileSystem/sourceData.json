@@ -3,18 +3,38 @@
         "id": "CPEN 100",
         "type": "COURSE",
         "items": {
-        "Assignment 1": {
-            "id": "Assignment 1",
-            "type": "ASSIGNMENT",
-            "items": {
-                "c": {
-                    "id": "c",
-                    "type": "PDF",
-                    "label": "c",
-                    "leaf": "test.pdf"
+            "Modules": {
+                "id": "Modules",
+                "type": "MODULES",
+                "items": {
+                    "Course Lecture Materials": {
+                        "id": "Course Lecture Materials",
+                        "type": "FOLDER",
+                        "items": {
+                            "lecture1": {
+                                "id": "lecture1",
+                                "type": "PDF",
+                                "leaf": "test.pdf"
+                            },
+                            "lecture2": {
+                                "id": "lecture2",
+                                "type": "PDF",
+                                "leaf": "test.pdf"
+                            },
+                            "lecture3": {
+                                "id": "lecture3",
+                                "type": "PDF",
+                                "leaf": "test.pdf"
+                            },
+                            "lecture4": {
+                                "id": "lecture3",
+                                "type": "PDF",
+                                "leaf": "test.pdf"
+                            }
+                        }
+                    }
                 }
             }
-        }
         }
     }
 }

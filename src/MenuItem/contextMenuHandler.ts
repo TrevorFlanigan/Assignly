@@ -1,3 +1,4 @@
+import { startCopyTo } from "@/redux/canvasFileSystemSlice";
 import {
   newFolder,
   selectFileSystem,
@@ -39,6 +40,9 @@ const useContextEvents = () => {
           break;
         case MenuOptions.MOVE_TO:
           dispatch(startMoveTo(path));
+          break;
+        case MenuOptions.COPY_TO:
+          dispatch(startCopyTo(path));
           break;
         default:
           break;

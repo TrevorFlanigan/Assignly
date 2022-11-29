@@ -1,24 +1,3 @@
-import {
-  FileType,
-  MenuOptions,
-  MockDirectory,
-  MockFileContent,
-} from "common/types";
-import { IconPin } from "@tabler/icons";
-import {
-  Group,
-  Menu,
-  Paper,
-  Popover,
-  Select,
-  Text,
-  TextInput,
-  Title,
-} from "@mantine/core";
-import FileIcon from "./FileIcon";
-import { ipcRenderer } from "electron";
-import { useAppDispatch, useAppSelector } from "@/redux/store";
-import { selectPath } from "@/redux/pathSlice";
 import createContextMenu from "@/MenuItem/createContextMenu";
 import {
   finishChangeType,
@@ -29,9 +8,15 @@ import {
   selectToMove,
   selectToRename,
 } from "@/redux/fileSystemSlice";
-import { useEffect, useRef, useState } from "react";
-import MoveTo from "./MoveTo";
+import { selectPath } from "@/redux/pathSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
 import toTitleCase from "@/util/toTitleCase";
+import { Popover, Select, TextInput, Title } from "@mantine/core";
+import { IconPin } from "@tabler/icons";
+import { FileType, MenuOptions, MockFileContent } from "common/types";
+import { useEffect, useRef, useState } from "react";
+import FileIcon from "./FileIcon";
+import MoveTo from "./MoveTo";
 
 type FileContainerProps = {
   name: string;

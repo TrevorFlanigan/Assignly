@@ -12,7 +12,7 @@ const store = configureStore({
     fileSystem: fileSystemReducer,
     pinned: pinnedReducer,
     canvasFileSystem: canvasFileSystemReducer,
-    canvasPath: canvasPathReducer
+    canvasPath: canvasPathReducer,
   },
 });
 

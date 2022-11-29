@@ -1,5 +1,11 @@
-import { MockFileContent } from "common/types";
-import { Title } from "@mantine/core";
+import createContextMenu from "@/MenuItem/createContextMenu";
+import { selectToCopy } from "@/redux/canvasFileSystemSlice";
+import { selectPath as selectCanvasPath } from "@/redux/canvasPathSlice";
+import { finishCopyTo } from "@/redux/fileSystemSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
+import { Popover, Title } from "@mantine/core";
+import { MenuOptions, MockFileContent } from "common/types";
+import CopyTo from "./CopyTo";
 import FileIcon from "./FileIcon";
 
 function toTitleCase(str: string) {
@@ -11,7 +17,7 @@ function toTitleCase(str: string) {
 type CanvasFileContainerProps = {
   name: string;
   file: MockFileContent;
-  handleClick: (key: string) => void;
+  handleClick: (key: string, file: MockFileContent) => void;
 };
 
 const CanvasFileContainer = ({
@@ -19,51 +25,69 @@ const CanvasFileContainer = ({
   file,
   handleClick,
 }: CanvasFileContainerProps) => {
+  const canvasPath = useAppSelector(selectCanvasPath);
+  const myPath = [...canvasPath, name];
+  const toCopy = useAppSelector(selectToCopy);
+
+  const beingCopied = toCopy?.join("") === myPath.join("");
+  const dispatch = useAppDispatch();
+  const cancelMoveTo = () => {
+    dispatch(
+      finishCopyTo({ cancel: true, file: undefined, path: [], name: "" })
+    );
+  };
+
   return (
-    <tr
-    // component="tr"
-    // style={
-    //   {
-    //     // flex: 1,
-    //     // display: "flex",
-    //     // flexDirection: "row",
-    //     // justifyContent: "space-between",
-    //     // alignItems: "center",
-    //   }
-    // }
+    <Popover
+      trapFocus
+      onClose={cancelMoveTo}
+      opened={beingCopied}
+      withArrow
+      shadow={"md"}
     >
-      <td
-        style={{
-          textDecoration: "underline",
-          cursor: "pointer",
+      <tr
+        onContextMenu={() => {
+          createContextMenu([MenuOptions.COPY_TO], myPath);
         }}
-        onClick={() => handleClick(name)}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <FileIcon file={file} />
-          <Title ml={10} order={6}>
-            {name}
-          </Title>
-        </div>
-      </td>
-      <td>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          {toTitleCase(file.type)}
-        </div>
-      </td>
-    </tr>
+        <Popover.Target>
+          <td
+            style={{
+              textDecoration: "underline",
+              cursor: "pointer",
+            }}
+            onClick={() => handleClick(name, file)}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <FileIcon file={file} />
+              <Title ml={10} order={6}>
+                {name}
+              </Title>
+            </div>
+          </td>
+        </Popover.Target>
+        <td>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            {toTitleCase(file.type)}
+          </div>
+        </td>
+      </tr>
+      <Popover.Dropdown>
+        {toCopy && <CopyTo canvasPath={toCopy} />}
+      </Popover.Dropdown>
+    </Popover>
   );
 };
 

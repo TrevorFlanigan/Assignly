@@ -17,7 +17,6 @@ const FileView = () => {
   const isAssignment = me.type === FileType.ASSIGNMENT;
 
   const handleClick = (key: string, file: MockFileContent) => {
-    console.log(file);
     if (file.type === FileType.PDF) {
       openPDF(file.leaf!);
       return;
@@ -55,7 +54,7 @@ const FileView = () => {
   return (
     <div
       onContextMenu={createNewThingContextMenu}
-      style={{ height: "100%", width: "100%", userSelect: "none" }}
+      style={{ userSelect: "none" }}
     >
       {isAssignment && <AssignmentHeader assignment={me} />}
       {files.length == 0 ? (

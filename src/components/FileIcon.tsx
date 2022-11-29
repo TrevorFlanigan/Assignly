@@ -8,6 +8,7 @@ import {
   IconNotes,
   IconFileText,
   IconTools,
+  IconHexagons,
 } from "@tabler/icons";
 type FileIconProps = {
   file: MockFileContent;
@@ -29,6 +30,8 @@ const FileIcon = ({ file }: FileIconProps) => {
       return <IconFileText />;
     case FileType.ASSIGNMENT:
       return <IconListCheck />;
+    case FileType.MODULES:
+      return <IconHexagons />;
     default:
       return <IconFile />;
   }
