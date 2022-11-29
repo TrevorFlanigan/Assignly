@@ -1,0 +1,19 @@
+{
+    "CPEN 100": {
+        "id": "CPEN 100",
+        "type": "COURSE",
+        "items": {
+        "Assignment 1": {
+            "id": "Assignment 1",
+            "type": "ASSIGNMENT",
+            "items": {
+                "c": {
+                    "id": "c",
+                    "type": "NOTE",
+                    "label": "c"
+                }
+            }
+        }
+        }
+    }
+}
