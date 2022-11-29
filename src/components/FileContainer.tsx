@@ -31,17 +31,12 @@ import {
 } from "@/redux/fileSystemSlice";
 import { useEffect, useRef, useState } from "react";
 import MoveTo from "./MoveTo";
-
-function toTitleCase(str: string) {
-  return str.replace(/\w\S*/g, function (txt) {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
-}
+import toTitleCase from "@/util/toTitleCase";
 
 type FileContainerProps = {
   name: string;
   file: MockFileContent;
-  handleClick: (key: string) => void;
+  handleClick: (key: string, file: MockFileContent) => void;
   handlePin: (key: string, file: MockFileContent) => void;
 };
 
@@ -112,7 +107,7 @@ const FileContainer = ({
               cursor: "pointer",
             }}
             onClick={() => {
-              if (!beingRenamed) handleClick(name);
+              if (!beingRenamed) handleClick(name, file);
             }}
           >
             <div

@@ -11,6 +11,7 @@ import get from "lodash.get";
 import { PinnedItemType, pinnedSlice } from "./pinnedSlice";
 import { showNotification } from "@mantine/notifications";
 import { IconStatusChange, IconX } from "@tabler/icons";
+import toTitleCase from "@/util/toTitleCase";
 // Define a type for the slice state
 export interface FileSystemState {
   value: MockDirectory;
@@ -27,11 +28,11 @@ const initialState: FileSystemState = {
   toMove: undefined,
 };
 
-const makeNewFolder = (name: string): MockFileContent => {
+const makeNewFolder = (name: string, type: FileType): MockFileContent => {
   return {
     id: name,
     items: {},
-    type: FileType.FOLDER,
+    type: type,
   } as MockFileContent;
 };
 
@@ -39,21 +40,21 @@ export const fileSystemSlice = createSlice({
   name: "fileSystem",
   initialState,
   reducers: {
-    newFolder: (state, actions: PayloadAction<string[]>) => {
+    newFolder: (state, actions: PayloadAction<NewThingEvent>) => {
       // Insane way of making a new folder
-      const path = actions.payload;
+      const { path, type } = actions.payload;
       const parent = getParentDirectory(state.value, path);
       if (!parent.items) {
         parent.items = {};
       }
       let suffix = "";
       let i = 1;
-      while (parent.items[`New Folder${suffix}`] !== undefined) {
+      while (parent.items[`New ${toTitleCase(type)}${suffix}`] !== undefined) {
         suffix = " " + i;
         i += 1;
       }
-      const newFolderName = `New Folder${suffix}`;
-      parent.items[newFolderName] = makeNewFolder(newFolderName);
+      const newFolderName = `New ${toTitleCase(type)}${suffix}`;
+      parent.items[newFolderName] = makeNewFolder(newFolderName, type);
     },
     startRename: (state, actions: PayloadAction<string[]>) => {
       state.toRename = actions.payload;
@@ -172,6 +173,11 @@ export const fileSystemSlice = createSlice({
   },
 });
 
+export type NewThingEvent = {
+  path: string[];
+  type: FileType;
+};
+
 export type FinishMoveToEvent = {
   srcPath: string[];
   destPath: string[];
@@ -230,6 +236,12 @@ export const selectToRename = (state: RootState) => state.fileSystem.toRename;
 export const selectToMove = (state: RootState) => state.fileSystem.toMove;
 export const selectToChangeType = (state: RootState) =>
   state.fileSystem.toChangeType;
+
+export const selectMe = (state: RootState) => {
+  const currFile = state.fileSystem.value;
+  const path = state.path.value;
+  return getParentDirectory(currFile, path);
+};
 export const {
   newFolder,
   startRename,

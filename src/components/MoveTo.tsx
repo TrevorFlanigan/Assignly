@@ -36,6 +36,10 @@ const MoveTo = ({ srcPath }: MoveToProps) => {
   return (
     <div>
       <>
+        <Title order={6} color="gray">
+          {localPath.slice(-1).length ? localPath.slice(-1) : "Home"}
+        </Title>
+
         <Group>
           <ActionIcon
             style={{ visibility: localPath.length ? "visible" : "hidden" }}

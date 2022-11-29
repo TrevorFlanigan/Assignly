@@ -1,8 +1,10 @@
 export enum FileType {
-  ASSIGNMENT = "ASSIGNMENT",
+  PROJECT = "PROJECT",
   COURSE = "COURSE",
   NOTES = "NOTES",
   FOLDER = "FOLDER",
+  PDF = "PDF",
+  ASSIGNMENT = "ASSIGNMENT",
 }
 
 export type MockDirectory = {
@@ -14,11 +16,15 @@ export type MockFileContent = {
   id: string;
   items: MockDirectory;
   type: FileType;
+  leaf?: string;
 };
 
 // ENUM to Label Name
 export enum MenuOptions {
   NEW_FOLDER = "New Folder",
+  NEW_PROJECT = "New Project",
+  NEW_COURSE = "New Course",
+  NEW_NOTES = "New Notes",
   RENAME = "Rename",
   CHANGE_TYPE = "Change File Type",
   MOVE_TO = "Move To...",

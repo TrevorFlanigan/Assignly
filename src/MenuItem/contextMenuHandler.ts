@@ -6,7 +6,7 @@ import {
   startRename,
 } from "@/redux/fileSystemSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
-import { MenuOptions } from "common/types";
+import { FileType, MenuOptions } from "common/types";
 import { ipcRenderer, IpcRendererEvent } from "electron";
 import { useEffect } from "react";
 
@@ -20,7 +20,16 @@ const useContextEvents = () => {
     ) => {
       switch (option) {
         case MenuOptions.NEW_FOLDER:
-          dispatch(newFolder(path));
+          dispatch(newFolder({ path, type: FileType.FOLDER }));
+          break;
+        case MenuOptions.NEW_PROJECT:
+          dispatch(newFolder({ path, type: FileType.PROJECT }));
+          break;
+        case MenuOptions.NEW_COURSE:
+          dispatch(newFolder({ path, type: FileType.COURSE }));
+          break;
+        case MenuOptions.NEW_NOTES:
+          dispatch(newFolder({ path, type: FileType.NOTES }));
           break;
         case MenuOptions.RENAME:
           dispatch(startRename(path));

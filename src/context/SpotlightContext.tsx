@@ -35,6 +35,7 @@ const SpotlightContext = ({ children }: SpotlightContextProps) => {
           title: value.id,
           group: value.type,
           keywords: currPath,
+          description: path,
           icon: <FileIcon file={value} />,
           onTrigger: () => {
             handleFileAction(currPath);

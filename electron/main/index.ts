@@ -16,6 +16,8 @@ import {
 import { Menu } from "electron/main";
 import { release } from "os";
 import { join } from "path";
+import { openPDF } from "./openPDF";
+
 // Disable GPU Acceleration for Windows 7
 if (release().startsWith("6.1")) app.disableHardwareAcceleration();
 
@@ -27,11 +29,12 @@ if (!app.requestSingleInstanceLock()) {
   process.exit(0);
 }
 
-let win: BrowserWindow | null = null;
+// let win: BrowserWindow | null = null;
 // Here, you can also use other preload
 const preload = join(__dirname, "../preload/index.js");
 const url = process.env.VITE_DEV_SERVER_URL;
 const indexHtml = join(process.env.DIST, "index.html");
+let win: BrowserWindow | null;
 
 async function createWindow() {
   win = new BrowserWindow({
@@ -43,7 +46,6 @@ async function createWindow() {
       contextIsolation: false,
     },
   });
-
   if (process.env.VITE_DEV_SERVER_URL) {
     // electron-vite-vue#298
     win.loadURL(url);
@@ -61,6 +63,19 @@ async function createWindow() {
   // Make all links open with the browser, not with the application
   win.webContents.setWindowOpenHandler(({ url }) => {
     if (url.startsWith("https:")) shell.openExternal(url);
+    // else if (url === "about:blank") {
+    //   return {
+    //     action: "allow",
+    //     overrideBrowserWindowOptions: {
+    //       frame: false,
+    //       fullscreenable: false,
+    //       backgroundColor: "black",
+    //       webPreferences: {
+    //         // preload: "my-child-window-preload-script.js",
+    //       },
+    //     },
+    //   };
+    // }
     return { action: "deny" };
   });
 }
@@ -139,4 +154,12 @@ ipcMain.on("show-context-menu", (event, args) => {
 
   const menu = Menu.buildFromTemplate(template);
   menu.popup(BrowserWindow.fromWebContents(event.sender) as PopupOptions);
+});
+
+ipcMain.on("open-pdf", (event, args) => {
+  const { name } = args;
+  if (!win) {
+    return;
+  }
+  openPDF(win, name);
 });

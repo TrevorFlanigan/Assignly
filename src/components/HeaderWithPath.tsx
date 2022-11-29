@@ -36,7 +36,9 @@ const HeaderWithPath = () => {
           }
           return (
             <Anchor key={index} onClick={() => handleClick(index + 1)}>
-              {title}
+              {path.length > 4 && index < path.length - 2
+                ? title[0].toUpperCase()
+                : title}
             </Anchor>
           );
         })}

@@ -3,14 +3,25 @@
     "id": "CPEN 441",
     "type": "COURSE",
     "items": {
+      "Project 1": {
+        "id": "Project 1",
+        "type": "PROJECT",
+        "items": {
+          "c": {
+            "id": "c",
+            "type": "PDF",
+            "leaf": "test.pdf"
+          }
+        }
+      },
       "Assignment 1": {
         "id": "Assignment 1",
         "type": "ASSIGNMENT",
         "items": {
-          "c": {
-            "id": "c",
-            "type": "NOTE",
-            "label": "c"
+          "Intructions": {
+            "id": "Intructions",
+            "type": "PDF",
+            "leaf": "test.pdf"
           }
         }
       }
