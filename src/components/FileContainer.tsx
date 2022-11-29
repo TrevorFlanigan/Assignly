@@ -146,9 +146,6 @@ const FileContainer = ({
             </div>
           )}
         </td>
-        <td>
-          <IconPin onClick={() => handlePin(name, file)} />
-        </td>
       </tr>
       <Popover.Dropdown>
         <MoveTo srcPath={toMove} />
