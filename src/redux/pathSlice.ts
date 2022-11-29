@@ -8,7 +8,7 @@ export interface PathState {
 
 // Define the initial state using that type
 const initialState: PathState = {
-  value: ["CPEN 441"],
+  value: [],
 };
 
 export const pathSlice = createSlice({
