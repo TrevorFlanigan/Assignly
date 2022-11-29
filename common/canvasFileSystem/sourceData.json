@@ -9,8 +9,9 @@
             "items": {
                 "c": {
                     "id": "c",
-                    "type": "NOTE",
-                    "label": "c"
+                    "type": "PDF",
+                    "label": "c",
+                    "leaf": "test.pdf"
                 }
             }
         }

@@ -23,7 +23,6 @@ const CanvasView = () => {
         <tr>
           <th style={{ width: "content" }}> Name </th>
           <th style={{ width: "content" }}> Type </th>
-          <th style={{ width: "0px" }}></th>
         </tr>
       </thead>
       <tbody>
