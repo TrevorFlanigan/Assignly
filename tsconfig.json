@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": ".",
     "composite": true,
     "baseUrl": ".",
     "target": "ESNext",
