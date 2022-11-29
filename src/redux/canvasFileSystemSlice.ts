@@ -1,7 +1,6 @@
 import {
     createSelector,
     createSlice,
-    current,
     PayloadAction,
 } from "@reduxjs/toolkit";
 import sampleFileSystem from "common/canvasFileSystem";
@@ -41,10 +40,12 @@ export const selectCurrentDirectory = (state: RootState) => {
     if (!curDirectory.items) {
         if (curDirectory.type == "PDF" && curDirectory.leaf) {
             openPDF(curDirectory.leaf);
+            return curDirectory.leaf;
         }
 
         return {} as MockDirectory;
     }
+    
     return curDirectory.items as MockDirectory;
 };
 

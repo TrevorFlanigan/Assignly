@@ -6,6 +6,9 @@ import Sidebar from "./components/Sidebar";
 import SpotlightContext from "./context/SpotlightContext";
 import "./MenuItem/contextMenuHandler";
 import useContextEvents from "./MenuItem/contextMenuHandler";
+
+import CanvasView from "./components/CanvasView";
+import CanvasHeader from "./components/CanvasHeader";
 const App: React.FC = () => {
   useContextEvents();
   return (
@@ -13,7 +16,7 @@ const App: React.FC = () => {
       <SpotlightContext>
         <AppShell
           navbar={<Sidebar />}
-          header={<HeaderWithPath />}
+          header={<CanvasHeader />}
           styles={(theme) => ({
             main: {
               backgroundColor:
@@ -23,7 +26,7 @@ const App: React.FC = () => {
             },
           })}
         >
-          <FileView />
+          <CanvasView />
         </AppShell>
       </SpotlightContext>
     </NotificationsProvider>
