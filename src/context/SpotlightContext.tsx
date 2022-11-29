@@ -4,10 +4,11 @@ import { useAppDispatch, useAppSelector } from "@/redux/store";
 import type { SpotlightAction } from "@mantine/spotlight";
 import { SpotlightProvider } from "@mantine/spotlight";
 import { IconHome, IconSearch } from "@tabler/icons";
-import { MockDirectory } from "common/types";
+import { FileType, MockDirectory, MockFileContent } from "common/types";
 import { ReactNode, useEffect, useState } from "react";
 import Fuse from "fuse.js";
 import FileIcon from "@/components/FileIcon";
+import openPDF from "@/util/openPDF";
 type SpotlightContextProps = {
   children: ReactNode;
 };
@@ -24,7 +25,11 @@ const SpotlightContext = ({ children }: SpotlightContextProps) => {
   const indexFileTree = (currFile: MockDirectory): SpotlightAction[] => {
     const stack = [["", currFile]] as [string, MockDirectory][];
     const ret = [] as SpotlightAction[];
-    const handleFileAction = (path: string) => {
+    const handleFileAction = (path: string, file: MockFileContent) => {
+      if (file.type === FileType.PDF) {
+        openPDF(file.leaf!);
+        return;
+      }
       dispatch(setPath(path.split("/")));
     };
     while (stack.length) {
@@ -38,7 +43,7 @@ const SpotlightContext = ({ children }: SpotlightContextProps) => {
           description: path,
           icon: <FileIcon file={value} />,
           onTrigger: () => {
-            handleFileAction(currPath);
+            handleFileAction(currPath, value);
           },
         });
         if (value.items) {

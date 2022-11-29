@@ -3,6 +3,7 @@ import {
   finishChangeType,
   finishMoveTo,
   finishRename,
+  selectFileSystem,
   selectHighestChildren,
   selectToChangeType,
   selectToMove,
@@ -32,6 +33,9 @@ const FileContainer = ({
   handlePin,
 }: FileContainerProps) => {
   const path = useAppSelector(selectPath);
+  const fs = useAppSelector(selectFileSystem);
+  console.log(fs);
+
   const myPath = [...path, name];
   const toRename = useAppSelector(selectToRename);
   const toChangeType = useAppSelector(selectToChangeType);
@@ -145,9 +149,6 @@ const FileContainer = ({
               {toTitleCase(file.type)}
             </div>
           )}
-        </td>
-        <td>
-          <IconPin onClick={() => handlePin(name, file)} />
         </td>
       </tr>
       <Popover.Dropdown>

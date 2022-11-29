@@ -53,8 +53,8 @@ const FileView = () => {
 
   return (
     <div
+      style={{ height: "100%", userSelect: "none" }}
       onContextMenu={createNewThingContextMenu}
-      style={{ userSelect: "none" }}
     >
       {isAssignment && <AssignmentHeader assignment={me} />}
       {files.length == 0 ? (
@@ -80,7 +80,6 @@ const FileView = () => {
             <tr>
               <th style={{ width: "content" }}>Name</th>
               <th style={{ width: "content" }}>Type</th>
-              <th style={{ width: "0px" }}></th>
             </tr>
           </thead>
           <tbody>

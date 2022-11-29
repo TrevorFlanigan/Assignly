@@ -1,3 +1,3 @@
-import s1 from "./sample1.json";
-
-export default s1;
+import prepared from "./prepared.json";
+const empty = {};
+export default empty;
