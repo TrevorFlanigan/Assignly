@@ -1,0 +1,127 @@
+{
+  "Green": {
+    "id": "Green",
+    "items": {
+      "lecture1": {
+        "id": "lecture11",
+        "type": "PDF",
+        "leaf": "lecture11.pdf"
+      },
+      "lecture7": {
+        "id": "lecture17",
+        "type": "PDF",
+        "leaf": "lecture17.pdf"
+      },
+      "lecture8": {
+        "id": "lecture18",
+        "type": "PDF",
+        "leaf": "lecture18.pdf"
+      }
+    },
+    "type": "FOLDER"
+  },
+  "Orange": {
+    "id": "Orange",
+    "items": {
+      "lecture1": {
+        "id": "lecture11",
+        "type": "PDF",
+        "leaf": "lecture11.pdf"
+      },
+      "lecture2": {
+        "id": "lecture12",
+        "type": "PDF",
+        "leaf": "lecture12.pdf"
+      },
+      "lecture3": {
+        "id": "lecture13",
+        "type": "PDF",
+        "leaf": "lecture13.pdf"
+      },
+      "lecture5": {
+        "id": "lecture15",
+        "type": "PDF",
+        "leaf": "lecture15.pdf"
+      },
+      "lecture6": {
+        "id": "lecture16",
+        "type": "PDF",
+        "leaf": "lecture16.pdf"
+      }
+    },
+    "type": "FOLDER"
+  },
+  "Red": {
+    "id": "Red",
+    "items": {
+      "lecture2": {
+        "id": "lecture12",
+        "type": "PDF",
+        "leaf": "lecture12.pdf"
+      },
+      "lecture4": {
+        "id": "lecture14",
+        "type": "PDF",
+        "leaf": "lecture14.pdf"
+      },
+      "lecture5": {
+        "id": "lecture15",
+        "type": "PDF",
+        "leaf": "lecture15.pdf"
+      }
+    },
+    "type": "FOLDER"
+  },
+  "Purple": {
+    "id": "Purple",
+    "items": {
+      "lecture3": {
+        "id": "lecture13",
+        "type": "PDF",
+        "leaf": "lecture13.pdf"
+      },
+      "lecture4": {
+        "id": "lecture14",
+        "type": "PDF",
+        "leaf": "lecture14.pdf"
+      },
+      "lecture9": {
+        "id": "lecture19",
+        "type": "PDF",
+        "leaf": "lecture19.pdf"
+      },
+      "lecture10": {
+        "id": "lecture20",
+        "type": "PDF",
+        "leaf": "lecture20.pdf"
+      }
+    },
+    "type": "FOLDER"
+  },
+  "Blue": {
+    "id": "Blue",
+    "items": {
+      "lecture6": {
+        "id": "lecture16",
+        "type": "PDF",
+        "leaf": "lecture16.pdf"
+      },
+      "lecture7": {
+        "id": "lecture17",
+        "type": "PDF",
+        "leaf": "lecture17.pdf"
+      },
+      "lecture9": {
+        "id": "lecture19",
+        "type": "PDF",
+        "leaf": "lecture19.pdf"
+      },
+      "lecture10": {
+        "id": "lecture20",
+        "type": "PDF",
+        "leaf": "lecture20.pdf"
+      }
+    },
+    "type": "FOLDER"
+  }
+}

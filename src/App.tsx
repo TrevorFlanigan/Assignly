@@ -9,7 +9,7 @@ import "./MenuItem/contextMenuHandler";
 import useContextEvents from "./MenuItem/contextMenuHandler";
 import "./styles.css";
 
-export const CANVAS_TEST = false;
+export const CANVAS_TEST = true;
 
 const App: React.FC = () => {
   useContextEvents();
