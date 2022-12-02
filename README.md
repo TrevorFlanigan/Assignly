@@ -7,9 +7,9 @@ Electron may not work on WSL.
 
 
 To run:
-cd into root directory
-npm install
-npm run dev
+1) cd into root directory
+2) npm install
+3) npm run dev
 
 To toggle between faux Canvas view and hybrid view of Faux Canvas and Assignly:
-in App.tsx, change "export const CANVAS_TEST = true;" to "false"
+- in App.tsx, change "export const CANVAS_TEST = true;" to "false"
